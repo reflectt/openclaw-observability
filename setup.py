@@ -6,12 +6,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="openclaw-observability",
     version="0.1.0",
-    author="OpenClaw",
-    author_email="team@openclaw.ai",
+    author="Reflectt AI",
+    author_email="team@reflectt.ai",
     description="Framework-agnostic observability toolkit for AI agents",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/openclaw/observability-toolkit",
+    url="https://github.com/reflectt/openclaw-observability",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     classifiers=[

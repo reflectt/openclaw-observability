@@ -332,7 +332,7 @@ Inspired by:
 - **LangSmith** - Production observability for LLMs
 - **OpenTelemetry** - Distributed tracing standard
 
-Built by the [OpenClaw](https://openclaw.ai) team.
+Built by the [Reflectt AI](https://reflectt.ai) team. Powered by [OpenClaw](https://openclaw.ai).
 
 ---
 
