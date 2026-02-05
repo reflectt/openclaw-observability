@@ -1,4 +1,4 @@
-# 🔍 OpenClaw Observability Toolkit
+# 🔍 Agent Observability Kit
 
 **Framework-agnostic observability for AI agents**
 
@@ -6,6 +6,7 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
+[![GitHub](https://img.shields.io/badge/github-reflectt%2Fagent--observability--kit-blue)](https://github.com/reflectt/agent-observability-kit)
 
 ## 🎯 The Problem
 
@@ -28,7 +29,7 @@
 - ✅ CrewAI
 - ✅ AutoGen
 - ✅ Raw Python agents
-- ✅ OpenClaw (native support)
+- ✅ Any custom agent framework
 
 **What you get:**
 1. **Visual execution traces** - See exactly what your agent did, step-by-step
@@ -41,14 +42,14 @@
 ### Installation
 
 ```bash
-pip install openclaw-observability
+pip install agent-observability-kit
 ```
 
 ### Basic Usage (Framework-Agnostic)
 
 ```python
-from openclaw_observability import observe, trace, init_tracer
-from openclaw_observability.span import SpanType
+from agent_observability import observe, trace, init_tracer
+from agent_observability.span import SpanType
 
 # Initialize
 tracer = init_tracer(agent_id="my-agent")
@@ -68,7 +69,7 @@ with trace("my_agent_run"):
 ### LangChain Integration
 
 ```python
-from openclaw_observability.integrations import LangChainCallbackHandler
+from agent_observability.integrations import LangChainCallbackHandler
 
 # Add to your LangChain calls
 handler = LangChainCallbackHandler(agent_id="my-agent")
@@ -165,18 +166,18 @@ Click any node to see:
 ### LangChain
 
 ```python
-from openclaw_observability.integrations import LangChainCallbackHandler
+from agent_observability.integrations import LangChainCallbackHandler
 
 handler = LangChainCallbackHandler(agent_id="my-agent")
 chain.run(input="...", callbacks=[handler])
 ```
 
-### OpenClaw Native
+### Custom Frameworks
 
 ```python
-from openclaw_observability.integrations import openclaw_observe
+from agent_observability import observe
 
-@openclaw_observe
+@observe
 def my_agent_function(input):
     return process(input)
 ```
@@ -185,7 +186,7 @@ def my_agent_function(input):
 
 ```python
 # Automatic detection of CrewAI tasks
-from openclaw_observability.integrations import CrewAIInstrumentor
+from agent_observability.integrations import CrewAIInstrumentor
 
 CrewAIInstrumentor.install()
 ```
@@ -193,14 +194,14 @@ CrewAIInstrumentor.install()
 ## 📦 Project Structure
 
 ```
-projects/observability-toolkit/
-├── src/openclaw_observability/
+agent-observability-kit/
+├── src/agent_observability/
 │   ├── tracer.py          # Core tracing SDK
 │   ├── storage.py         # Trace persistence
 │   ├── span.py            # Data structures
 │   └── integrations/      # Framework plugins
 │       ├── langchain.py
-│       └── openclaw.py
+│       └── custom.py
 ├── server/
 │   ├── app.py            # Flask web server
 │   └── static/           # Web UI
@@ -224,7 +225,7 @@ projects/observability-toolkit/
 
 **Framework Integrations:**
 - ✅ LangChain callback handler
-- ✅ OpenClaw native support
+- ✅ Custom framework support
 - 🚧 CrewAI (coming next)
 - 🚧 AutoGen (coming next)
 
@@ -297,7 +298,7 @@ python app.py
 
 ### Storage
 
-- **Default:** JSON files in `~/.openclaw/traces/`
+- **Default:** JSON files in `~/.agent-traces/`
 - **Production:** ClickHouse, TimescaleDB, or S3
 - **Retention:** Configurable (default 90 days)
 
@@ -311,7 +312,7 @@ python app.py
 
 We're in active development! Contributions welcome:
 
-1. Fork the repo
+1. Fork the repo at [github.com/reflectt/agent-observability-kit](https://github.com/reflectt/agent-observability-kit)
 2. Create a feature branch
 3. Add tests
 4. Submit PR
@@ -332,7 +333,7 @@ Inspired by:
 - **LangSmith** - Production observability for LLMs
 - **OpenTelemetry** - Distributed tracing standard
 
-Built by the [Reflectt AI](https://reflectt.ai) team. Powered by [OpenClaw](https://openclaw.ai).
+**Built by the Reflectt AI team.**
 
 ---
 
@@ -347,6 +348,6 @@ We're making that capability **universal**—no framework lock-in.
 
 ---
 
-**Questions?** Open an issue or join our [Discord](https://discord.gg/openclaw)
+**Questions?** Open an issue at [github.com/reflectt/agent-observability-kit](https://github.com/reflectt/agent-observability-kit)
 
 **Star the repo** if you find this useful! ⭐
